@@ -112,13 +112,13 @@ RZLZONE_MINIFY_ONLY_PROD=false
 ### Minify a particular Blade string manually
 
 ```php
-RzlBladeMinify::bladeMinify("<div>...</div>");
+RzlBladeMinify::minify("<div>...</div>");
 ```
 
 ### Ignoring minify a particular Blade string manually
 
 ```php
-RzlBladeMinify::excludeBladeMinify("<div>...</div>");
+RzlBladeMinify::excludeMinify("<div>...</div>");
 ```
 
 ### Ignore minify in Blade
