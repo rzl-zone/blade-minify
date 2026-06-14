@@ -71,14 +71,14 @@ class ViteCustomProvider extends ServiceProvider
   protected function registerDirective(BladeCompiler $bladeCompiler)
   {
     $bladeCompiler->directive('vite', function ($expression) {
-      return "<?php echo app(\\RzlApp\\BladeMinify\\VendorRewrites\\Vite\\ViteCustom::class)(
+      return "<?php echo app(\\RzlZone\\BladeMinify\\VendorRewrites\\Laravel\\Vite\\ViteCustom::class)(
             {$expression},
             config('app.build_dir')
         ); ?>";
     });
 
     $bladeCompiler->directive('viteReactRefresh', function ($expression) {
-      return "<?php echo app(\\RzlApp\\BladeMinify\\VendorRewrites\\Vite\\ViteCustom::class)
+      return "<?php echo app(\\RzlZone\\BladeMinify\\VendorRewrites\\Laravel\\Vite\\ViteCustom::class)
         ->useHotFileRefresh({$expression})
         ->reactRefresh({$expression}); ?>";
     });
