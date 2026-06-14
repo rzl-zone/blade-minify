@@ -1,8 +1,6 @@
-## Changelog
+# Changelog
 
 ## All notable changes to `rzl-zone/blade-minify` will be documented in this file.
-
----
 
 ## v0.0.3
 
