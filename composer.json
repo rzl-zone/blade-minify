@@ -1,0 +1,64 @@
+{
+  "authors": [
+    {
+      "email": "rizalvindwiky1998@gmail.com",
+      "name": "Rizalvin Dwiky",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "RzlZone\\BladeMinify\\": "src/"
+    },
+    "files": [
+      "./src/helper/Internal-helper.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "RzlZone\\BladeMinify\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "description": "A Laravel package to seamlessly minify Blade HTML output for faster pages and a better user experience.",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RzlZone\\BladeMinify\\Providers\\RzlBladeMinifyServiceProvider"
+      ]
+    }
+  },
+  "homepage": "https://github.com/rzl-zone/blade-minify",
+  "keywords": [
+    "rzl-app",
+    "html-minify",
+    "blade-minify",
+    "laravel-minify",
+    "laravel-blade-minify",
+    "laravel",
+    "blade",
+    "minify",
+    "html",
+    "performance"
+  ],
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "name": "rzl-zone/blade-minify",
+  "require": {
+    "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+    "laravel/framework": "^10.0|^11.0|^12.0|^13.0",
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.86",
+    "laravel/boost": "^1.1",
+    "phpunit/phpunit": "^10.5"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "type": "library"
+}

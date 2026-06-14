@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+/src/js
+/src/ts/*.ts
+/src/ts/**/*.ts
+/src/ts 
+/deprecated
+/_deprecated
+deprecated
+_deprecated
+/dist
