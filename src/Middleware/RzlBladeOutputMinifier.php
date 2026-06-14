@@ -55,11 +55,15 @@ class RzlBladeOutputMinifier
   }
 
   /**
-   * @param Response $response
-   * @return bool
-   */
-  protected function isResponseHtml(Response $response): bool
+  * @param \Symfony\Component\HttpFoundation\Response $response
+  * @return bool
+  */
+  protected function isResponseHtml($response): bool
   {
+    if (! $response instanceof \Symfony\Component\HttpFoundation\Response) {
+      return false;
+    }
+
     $contentType = strtolower(
       strtok($response->headers->get('Content-Type', ''), ';')
     );
