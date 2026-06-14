@@ -1,12 +1,12 @@
 # ⚡️Rzl Zone - Blade Minifier 🚀
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/rzl-app/laravel-blade-minify.svg?style=flat-rounded)](https://packagist.org/packages/rzl-zone/laravel-blade-minify)
-[![Total Downloads](https://img.shields.io/packagist/dt/rzl-zone/laravel-blade-minify.svg?style=flat-rounded)](https://packagist.org/packages/rzl-zone/laravel-blade-minify)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/rzl-zone/blade-minify.svg?style=flat-rounded)](https://packagist.org/packages/rzl-zone/blade-minify)
+[![Total Downloads](https://img.shields.io/packagist/dt/rzl-zone/blade-minify.svg?style=flat-rounded)](https://packagist.org/packages/rzl-zone/blade-minify)
 [![PHPStan](https://img.shields.io/badge/phpstan-level%208-brightgreen?style=flat-rounded)](https://phpstan.org)
 [![PHP](https://img.shields.io/badge/PHP-^8.2-blue?style=flat-rounded)](https://www.php.net)
-[![Laravel](https://img.shields.io/badge/Laravel-^10.x%20|%20^11.x%20|%20^12.x-red?style=flat-rounded)](https://laravel.com)
-[![Illuminate Support](https://img.shields.io/badge/illuminate%2Fsupport-^10.x%20|%20^11.x%20|%20^12.x-blue?style=flat-rounded)](https://laravel.com/docs)
-[![GitHub](https://img.shields.io/badge/GitHub-rzl--app%2Flaravel--blade--minify-181717?logo=github)](https://github.com/rzl-zone/laravel-blade-minify)
+[![Laravel](https://img.shields.io/badge/Laravel-^10.x%20|%20^11.x%20|%20^12.x|%20^13.x-red?style=flat-rounded)](https://laravel.com)
+[![Illuminate Support](https://img.shields.io/badge/illuminate%2Fsupport-^10.x%20|%20^11.x%20|%20^12.x|%20^13.x-blue?style=flat-rounded)](https://laravel.com/docs)
+[![GitHub](https://img.shields.io/badge/GitHub-rzl--app%2Fblade--minify-181717?logo=github)](https://github.com/rzl-zone/blade-minify)
 [![Repo on GitHub](https://img.shields.io/badge/Repo-on%20GitHub-181717?logo=github&style=flat-rounded)](https://github.com/rzl-zone)
 
 > 🚀 **Automatically minifies your Laravel Blade output for smaller pages & blazing-fast load times.**
