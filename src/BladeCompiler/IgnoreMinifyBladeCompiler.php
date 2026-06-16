@@ -7,8 +7,8 @@ use Illuminate\View\Compilers\BladeCompiler;
 class IgnoreMinifyBladeCompiler extends BladeCompiler
 {
   protected $openExcludeMinifyCount = 0;
-  public const IGNORE_START = '<!--STARTED_IGNORE_RZLZONE_BLADE_MINIFY-->';
-  public const IGNORE_END   = '<!--ENDED_IGNORE_RZLZONE_BLADE_MINIFY-->';
+  public const IGNORE_START = '<!--START_IGNORE_RZLZONE_BLADE_MINIFY-->';
+  public const IGNORE_END   = '<!--END_IGNORE_RZLZONE_BLADE_MINIFY-->';
 
   public function compileString($value)
   {
@@ -21,14 +21,14 @@ class IgnoreMinifyBladeCompiler extends BladeCompiler
     return $result;
   }
 
-  public function compileExcludeMinify($expression): string
+  public function compileExcludeMinify($expression)
   {
     $this->openExcludeMinifyCount++;
 
     return "<?php echo '" . self::IGNORE_START . "'; ?>";
   }
 
-  public function compileEndExcludeMinify($expression): string
+  public function compileEndExcludeMinify($expression)
   {
     if ($this->openExcludeMinifyCount == 0) {
       throw new \Exception('Unexpected @endIgnoreRzlzoneMinify directive detected.');

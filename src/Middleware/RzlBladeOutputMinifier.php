@@ -3,41 +3,35 @@
 namespace RzlZone\BladeMinify\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use RzlZone\BladeMinify\RzlBladeMinify;
 
 class RzlBladeOutputMinifier
 {
   /**
-   * @param Request $request
+   * @param \Illuminate\Http\Request $request
    * @param Closure $next
    * @return mixed
    */
   public function handle($request, Closure $next): mixed
   {
-    /** @var Response */
+    /** @var \Illuminate\Http\Response */
     $response = $next($request);
 
     if (
       $this->isResponseObject($response)
       && $this->isResponseHtml($response)
-      && !$this->isIgnoredRoute($request)
+      && ! $this->isRouteIgnored($request)
     ) {
       $html = str($response->getContent())->toString();
 
       $content = null;
 
-      if (!config('rzlzone-blade-minify.enable')) {
-        $content = RzlBladeMinify::disableMinify($html);
-      } elseif (config('rzlzone-blade-minify.run_production_only') && !app()->isProduction()) {
-        $content = RzlBladeMinify::disableMinify($html);
-      } else {
-        if (!app()->isProduction()) {
-          $html = str($html)->replace(["%5B", "%5D"], ["[", "]"])->toString();
-        }
-        $content = RzlBladeMinify::minify($html);
-      }
+      // Contextually process the HTML payload using a single-line conditional expression
+      $shouldDisable = !config('rzlzone-blade-minify.enable', true) || (config('rzlzone-blade-minify.run_production_only', false) && !app()->isProduction());
+
+      $content = $shouldDisable
+        ? RzlBladeMinify::disableMinify($html)
+        : RzlBladeMinify::minify($html);
 
       $response->setContent($content);
     }
@@ -46,48 +40,53 @@ class RzlBladeOutputMinifier
   }
 
   /**
-  * @param Response $response
-  * @return bool
-  */
-  protected function isResponseObject($response): bool
+   * @param mixed $response
+   * @return bool
+   */
+  private function isResponseObject($response): bool
   {
     return is_object($response) && $response instanceof \Symfony\Component\HttpFoundation\Response;
   }
 
   /**
-  * @param \Symfony\Component\HttpFoundation\Response $response
-  * @return bool
-  */
-  protected function isResponseHtml($response): bool
+   * @param mixed $response
+   * @return bool
+   */
+  private function isResponseHtml($response): bool
   {
     if (! $response instanceof \Symfony\Component\HttpFoundation\Response) {
       return false;
     }
 
     $contentType = strtolower(
-      strtok($response->headers->get('Content-Type', ''), ';')
+      trim(explode(
+        ';',
+        $response->headers->get('Content-Type', '')
+      )[0])
     );
 
     if ($contentType === 'text/html') {
       return true;
     }
 
-    $content = $response->getContent();
+    $content = ltrim((string) $response->getContent());
 
-    return is_string($content)
-        && (
-          str_contains($content, '<html')
-          || str_contains($content, '</html')
-            || str_contains($content, '<!DOCTYPE html')
-        );
+    return preg_match(
+      '/<html\b.*?>.*<body\b.*?>.*<\/body>.*<\/html>/is',
+      $content
+    ) === 1;
   }
 
   /**
-   * @param Request $request
+   * @param mixed $request
    * @return bool
    */
-  protected function isIgnoredRoute($request): bool
+  private function isRouteIgnored($request): bool
   {
+    if (! $request instanceof \Illuminate\Http\Request) {
+      return false;
+    }
+
     return $request->route() && in_array($request->route()->getName(), config('rzlzone-blade-minify.ignore_route_name', []));
   }
 }

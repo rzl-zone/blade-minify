@@ -11,7 +11,7 @@
       "RzlZone\\BladeMinify\\": "src/"
     },
     "files": [
-      "./src/helper/Internal-helper.php"
+      "./src/helper/InternalHelper.php"
     ]
   },
   "autoload-dev": {
@@ -49,7 +49,7 @@
   "require": {
     "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
     "laravel/framework": "^10.0|^11.0|^12.0|^13.0",
-    "php": "^8.2"
+    "php": "^8.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.86",

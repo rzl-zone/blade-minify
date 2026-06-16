@@ -18,29 +18,21 @@ if (!function_exists(function: "__rzl_bm_get_path_file__")) {
    */
   function __rzl_bm_get_path_file__($fileOrPathName, $removeFirstSlash = true, $useBackSlash = false, $default = null): string|null
   {
-    if (filled($fileOrPathName)) {
-      $name = str($fileOrPathName)
-        ->replace("\\", "/")
-        ->replaceMatches(['#/{2,}#'], "/");
-
-      if ($removeFirstSlash && $name->startsWith("/")) {
-        $returnPath = $name->replaceFirst("/", "");
-
-        if ($useBackSlash) {
-          return $returnPath->replace("/", "\\")->toString();
-        }
-
-        return $returnPath->toString();
-      }
-
-      if ($useBackSlash) {
-        return $name->replace("/", "\\")->toString();
-      }
-
-      return $name->toString();
+    // 1. Handle empty input by falling back to the default value
+    if (blank($fileOrPathName)) {
+      return blank($default) ? null : __rzl_bm_get_path_file__($default, $removeFirstSlash, $useBackSlash);
     }
 
-    return filled($default) ? __rzl_bm_get_path_file__($default, $removeFirstSlash, $useBackSlash) : null;
+    // 2. Normalize slashes (convert backslashes to forward slashes & remove duplicates)
+    $path = str($fileOrPathName)->replace('\\', '/')->replaceMatches('#/{2,}#', '/');
+
+    // 3. Strip the leading slash if requested
+    if ($removeFirstSlash && $path->startsWith('/')) {
+      $path = $path->after('/');
+    }
+
+    // 4. Convert to backslashes if requested, then return as a string
+    return $useBackSlash ? $path->replace('/', '\\')->toString() : $path->toString();
   }
 }
 

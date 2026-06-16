@@ -8,4 +8,6 @@
 /_deprecated
 deprecated
 _deprecated
+_internal
 /dist
+composer.lock
