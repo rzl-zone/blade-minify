@@ -1,12 +1,9 @@
-<div align="center" style="display: flex; flex-direction: column; align-items: center; gap: 0rem">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/rzl-zone/rzl-zone/main/logo-circle.png">
-    <img
-      src="https://raw.githubusercontent.com/rzl-zone/rzl-zone/main/logo-circle.png"
-      alt="Rzl Zone Logo"
-      width="110"
-      style="max-width: 100%;"
-    />
-  </a>
+<div align="center" style="display: flex;justify-content: center;flex-direction: column;align-items: center;gap: 0rem">
+  <p align="center">
+    <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/rzl-zone/rzl-zone/main/logo-circle.png">
+      <img src="https://raw.githubusercontent.com/rzl-zone/rzl-zone/main/logo-circle.png" align="middle" alt="RzlZone Logo" width="110" style="max-width: 100%;" />
+    </a>
+  </p>
 </div>
 
 <h1 align="center"><strong>Blade Minify</strong></h1>
