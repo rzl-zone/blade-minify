@@ -179,7 +179,7 @@ The package natively tracks, isolates, and guards core asset bundler structuresâ
 
 <h2 id="custom-vite-architecture-mapping">ðŸ“¦ Custom Vite Architecture Mapping</h2>
 
-Publishing the configuration creates the `custom-vite` block inside `config/blade-minify.php`. This gives you full control over customized asset folders, CSP nonces, and hot-reload file parameters:
+Publishing the configuration creates the `custom-vite` block inside `config/rzlzone-blade-minify.php`. This gives you full control over customized asset folders, CSP nonces, and hot-reload file parameters:
 
 ```php
 <?php
