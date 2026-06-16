@@ -62,6 +62,7 @@
 - 💻 [Blade Implementation Usage](#blade-implementation-usage)
 - 📝 [Changelog](#changelog)
 - 🤝 [Contributing](#contributing)
+- ❤️ [Become a Sponsor](#become-a-sponsor)
 - 🛡 [Security](#security)
 - 🙌 [Credits](#credits)
 - 📜 [License](#license)
@@ -84,10 +85,6 @@ You can install the package via composer:
 ```bash
 composer require rzl-zone/blade-minify
 ```
-
-## Sponsor Rzl Blade Minify on GitHub
-
-[Become a sponsor to Rzl App](https://github.com/sponsors/rzl-app).
 
 ---
 
@@ -359,6 +356,14 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 <h2 id="contributing">🤝 Contributing</h2>
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+---
+
+<h2 id="become-a-sponsor">❤️ Become a Sponsor</h2>
+
+[Become a sponsor to Rzl App](https://github.com/sponsors/rzl-app).
+
+---
 
 ---
 
