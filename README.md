@@ -49,28 +49,28 @@
 
 ## 📚 Table of Contents
 
-- 🛠 [Requirements](#requirements)
-- ⚙️ [Installation](#installation)
-- 🚀 [Setup](#setup)
-- 🔥 [Usage](#usage)
-- ℹ️ [Programmatic Manual Operations](#programmatic-manual-operations)
-- ℹ️ [Inline Blade Directive Isolation](#inline-blade-directive-isolation)
-- ⚡️ [Advanced Integration with Vite & React Fast Refresh](#advanced-integration-with-vite-and-react-fast-refresh)
-- 📦 [Custom Vite Architecture Mapping](#custom-vite-architecture-mapping)
-- ⚙️ [Environment Tailoring Examples](#environment-tailoring-examples)
-- 🛠 [How to consume these in `vite.config.js`](#how-to-consume-in-vite-config)
-- 💻 [Blade Implementation Usage](#blade-implementation-usage)
-- 📝 [Changelog](#changelog)
-- 🤝 [Contributing](#contributing)
-- ❤️ [Become a Sponsor](#become-a-sponsor)
-- 🛡 [Security](#security)
-- 🙌 [Credits](#credits)
-- 📜 [License](#license)
-- 🔗 [Framework & Reference Links](#framework--reference-links)
+- 🛠 [Requirements](#user-content-requirements)
+- ⚙️ [Installation](#user-content-installation)
+- 🚀 [Setup](#user-content-setup)
+- 🔥 [Usage](#user-content-usage)
+- ℹ️ [Programmatic Manual Operations](#user-content-programmatic-manual-operations)
+- ℹ️ [Inline Blade Directive Isolation](#user-content-inline-blade-directive-isolation)
+- ⚡️ [Advanced Integration with Vite & React Fast Refresh](#user-content-advanced-integration-with-vite-and-react-fast-refresh)
+- 📦 [Custom Vite Architecture Mapping](#user-content-custom-vite-architecture-mapping)
+- ⚙️ [Environment Tailoring Examples](#user-content-environment-tailoring-examples)
+- 🛠 [How to consume these in `vite.config.js`](#user-content-how-to-consume-in-vite-config)
+- 💻 [Blade Implementation Usage](#user-content-blade-implementation-usage)
+- 📝 [Changelog](#user-content-changelog)
+- 🤝 [Contributing](#user-content-contributing)
+- ❤️ [Become a Sponsor](#user-content-become-a-sponsor)
+- 🛡 [Security](#user-content-security)
+- 🙌 [Credits](#user-content-credits)
+- 📜 [License](#user-content-license)
+- 🔗 [Framework & Reference Links](#user-content-framework--reference-links)
 
 ---
 
-<h2 id="requirements">🛠 Requirements</h2>
+<h2 id="user-content-requirements">🛠 Requirements</h2>
 
 | Laravel Framework & `illuminate/support` | PHP  |
 | ---------------------------------------- | ---- |
@@ -78,7 +78,7 @@
 
 ---
 
-<h2 id="installation">⚙️ Installation</h2>
+<h2 id="user-content-installation">⚙️ Installation</h2>
 
 You can install the package via composer:
 
@@ -88,7 +88,7 @@ composer require rzl-zone/blade-minify
 
 ---
 
-<h2 id="setup">🚀 Setup</h2>
+<h2 id="user-content-setup">🚀 Setup</h2>
 
 ### Publish config
 
@@ -104,7 +104,7 @@ php artisan vendor:publish --tag=RzlZoneBladeMinify
 
 ---
 
-<h2 id="usage">🔥 Usage</h2>
+<h2 id="user-content-usage">🔥 Usage</h2>
 
 ### Enable in .env
 
@@ -141,7 +141,7 @@ RZLZONE_MINIFY_ONLY_PROD=false
 
 ---
 
-<h2 id="programmatic-manual-operations">ℹ️ Programmatic Manual Operations</h2>
+<h2 id="user-content-programmatic-manual-operations">ℹ️ Programmatic Manual Operations</h2>
 
 ```php
 use RzlZone\BladeMinify\Facades\RzlBladeMinify;
@@ -155,7 +155,7 @@ $isolatedHtml = RzlBladeMinify::ignoreMinify("<code>  preserve   whitespace  </c
 
 ---
 
-<h2 id="inline-blade-directive-isolation">ℹ️ Inline Blade Directive Isolation</h2>
+<h2 id="user-content-inline-blade-directive-isolation">ℹ️ Inline Blade Directive Isolation</h2>
 
 To prevent specific code segments or third-party blocks from being targeted by the regex compression loops, wrap your code inside the dedicated wrapper directive:
 
@@ -170,14 +170,14 @@ To prevent specific code segments or third-party blocks from being targeted by t
 
 ---
 
-<h2 id="advanced-integration-with-vite-and-react-fast-refresh">⚡️ Advanced Integration with Vite & React Fast Refresh</h2>
+<h2 id="user-content-advanced-integration-with-vite-and-react-fast-refresh">⚡️ Advanced Integration with Vite & React Fast Refresh</h2>
 
 No special layout modifications or fragile workarounds are required.  
 The package natively tracks, isolates, and guards core asset bundler structures—such as React Fast Refresh preambles—ensuring strict security tokens and javascript scopes are preserved post-minification.
 
 ---
 
-<h2 id="custom-vite-architecture-mapping">📦 Custom Vite Architecture Mapping</h2>
+<h2 id="user-content-custom-vite-architecture-mapping">📦 Custom Vite Architecture Mapping</h2>
 
 Publishing the configuration creates the `custom-vite` block inside `config/rzlzone-blade-minify.php`. This gives you full control over customized asset folders, CSP nonces, and hot-reload file parameters:
 
@@ -271,7 +271,7 @@ return [
 
 ---
 
-<h2 id="environment-tailoring-examples">⚙️ Environment Tailoring Examples (.env)</h2>
+<h2 id="user-content-environment-tailoring-examples">⚙️ Environment Tailoring Examples (.env)</h2>
 
 You can easily override your asset pipeline behavior dynamically without touching your production config file:
 
@@ -294,7 +294,7 @@ VITE_APP_BUILD_MANIFEST_NAME="${APP_BUILD_MANIFEST_NAME}"
 
 ---
 
-<h2 id="how-to-consume-in-vite-config">🛠 How to consume these in <code>vite.config.js</code></h2>
+<h2 id="user-content-how-to-consume-in-vite-config">🛠 How to consume these in <code>vite.config.js</code></h2>
 
 To make your frontend build tool automatically adapt to the configuration above, load the environment variables securely and bind them to your Vite options:
 
@@ -333,7 +333,7 @@ export default defineConfig(({ mode }) => {
 
 ---
 
-<h2 id="blade-implementation-usage">💻 Blade Implementation Usage</h2>
+<h2 id="user-content-blade-implementation-usage">💻 Blade Implementation Usage</h2>
 
 Standard framework asset directives compile seamlessly.  
 The core minifier flags these tags with internal structural attributes (rzl-zone--bm) to ensure they remain safe and functional:
@@ -347,19 +347,19 @@ The core minifier flags these tags with internal structural attributes (rzl-zone
 
 ---
 
-<h2 id="changelog">📝 Changelog</h2>
+<h2 id="user-content-changelog">📝 Changelog</h2>
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ---
 
-<h2 id="contributing">🤝 Contributing</h2>
+<h2 id="user-content-contributing">🤝 Contributing</h2>
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ---
 
-<h2 id="become-a-sponsor">❤️ Become a Sponsor</h2>
+<h2 id="user-content-become-a-sponsor">❤️ Become a Sponsor</h2>
 
 [Become a sponsor to Rzl App](https://github.com/sponsors/rzl-app).
 
@@ -367,13 +367,13 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ---
 
-<h2 id="security">🛡 Security</h2>
+<h2 id="user-content-security">🛡 Security</h2>
 
 Please report issues to [rzlzone.dev@gmail.com](mailto:rzlzone.dev@gmail.com).
 
 ---
 
-<h2 id="credits">🙌 Credits</h2>
+<h2 id="user-content-credits">🙌 Credits</h2>
 
 - [Rzl App](https://github.com/rzl-app)
 - [All Contributors](../../contributors)
@@ -382,13 +382,13 @@ Please report issues to [rzlzone.dev@gmail.com](mailto:rzlzone.dev@gmail.com).
 
 ##
 
-<h2 id="license">📜 License</h2>
+<h2 id="user-content-license">📜 License</h2>
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 ---
 
-<h2 id="framework--reference-links">🔗 Framework & Reference Links</h2>
+<h2 id="user-content-framework--reference-links">🔗 Framework & Reference Links</h2>
 
 | Reference             | URL                                                                                                                                            |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
