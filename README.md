@@ -90,17 +90,66 @@ composer require rzl-zone/blade-minify
 
 <h2 id="user-content-setup">🚀 Setup</h2>
 
-### Publish config
+1. Install Package
 
-```php
-php artisan vendor:publish --tag=RzlZoneBladeMinify
-```
+    ```bash
+    composer require rzlzone/blade-minify
+    ```
 
-### Add middleware to web middleware group within app/Http/Kernel.php
+2. Publish Configuration
 
-```php
-\RzlZone\BladeMinify\Middleware\RzlBladeOutputMinifier::class
-```
+    ```bash
+    php artisan vendor:publish --tag=RzlZoneBladeMinify
+    ```
+
+### That's It 🎉
+
+The package automatically registers its service provider and middleware through Laravel's package discovery system.
+
+No additional setup is required for Laravel 10, 11, 12, or 13.
+
+### Optional Manual Registration
+
+#### Service Provider
+
+  > Only required if Laravel Package Discovery has been disabled.
+
+  ```php
+  'providers' => [
+      \RzlZone\BladeMinify\Providers\RzlBladeMinifyServiceProvider::class,
+  ],
+  ```
+
+### Middleware
+
+> The package automatically registers its middleware by default.  
+> Manual registration is only necessary if you prefer to manage the middleware yourself.
+
+#### Laravel 10
+
+  Add the middleware to the `web` middleware group in `app/Http/Kernel.php`:
+
+  ```php
+  protected $middlewareGroups = [
+      'web' => [
+          \RzlZone\BladeMinify\Middleware\RzlBladeOutputMinifier::class,
+
+          // Other middleware...
+      ],
+  ];
+  ```
+
+#### Laravel 11, 12 & 13
+
+  Add the middleware to the `web` middleware group in `bootstrap/app.php`:
+
+  ```php
+  ->withMiddleware(function (Middleware $middleware) {
+      $middleware->web(append: [
+          \RzlZone\BladeMinify\Middleware\RzlBladeOutputMinifier::class,
+      ]);
+  })
+  ```
 
 ---
 
