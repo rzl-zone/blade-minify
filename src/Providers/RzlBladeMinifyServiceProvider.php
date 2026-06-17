@@ -59,12 +59,6 @@ class RzlBladeMinifyServiceProvider extends ServiceProvider
 
   protected function registerOptionalProviders(): void
   {
-    // if (class_exists(\Laravel\Boost\BoostServiceProvider::class)) {
-    //   $this->app->register(
-    //     \RzlZone\BladeMinify\Providers\BoostServiceProvider::class
-    //   );
-    // }
-
     if (class_exists(\Illuminate\Foundation\Vite::class)) {
       $this->app->register(
         \RzlZone\BladeMinify\Providers\CustomViteProvider::class

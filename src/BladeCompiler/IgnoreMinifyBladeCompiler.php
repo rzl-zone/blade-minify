@@ -7,8 +7,8 @@ use Illuminate\View\Compilers\BladeCompiler;
 class IgnoreMinifyBladeCompiler extends BladeCompiler
 {
   protected $openExcludeMinifyCount = 0;
-  public const IGNORE_START = '<!--START_IGNORE_RZLZONE_BLADE_MINIFY-->';
-  public const IGNORE_END   = '<!--END_IGNORE_RZLZONE_BLADE_MINIFY-->';
+  final public const IGNORE_START = '<!--START_IGNORE_RZLZONE_BLADE_MINIFY-->';
+  final public const IGNORE_END   = '<!--END_IGNORE_RZLZONE_BLADE_MINIFY-->';
 
   public function compileString($value)
   {

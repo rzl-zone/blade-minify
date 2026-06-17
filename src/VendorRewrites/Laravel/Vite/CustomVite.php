@@ -5,6 +5,7 @@ namespace RzlZone\BladeMinify\VendorRewrites\Laravel\Vite;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use RzlZone\BladeMinify\Support\RzlBladeInternalAttribute;
 
 class CustomVite extends \Illuminate\Foundation\Vite
 {
@@ -14,8 +15,8 @@ class CustomVite extends \Illuminate\Foundation\Vite
 
   private $preferredData = [];
 
-  protected $_AttrMainKey_ = "rzl-zone--blade-minify";
-  protected $_AttrKeyIgnoreMinify_ = "ignore--minify";
+  protected $__AttrMainKey = RzlBladeInternalAttribute::INTERNAL_ATTRIBUTE_KEY;
+  protected $__AttrKeyIgnoreMinify = RzlBladeInternalAttribute::INTERNAL_ATTRIBUTE_KEY_IGNORE;
 
   /** ------------------------------------------------------------------
    * * ***Generate Vite tags for an entrypoint view layout.***
@@ -39,7 +40,7 @@ class CustomVite extends \Illuminate\Foundation\Vite
   public function __invoke($entrypoints, $buildDirectory = null)
   {
     $this->persistenceRzlAttr = [
-      $this->_AttrMainKey_ => true,
+      $this->__AttrMainKey => true,
       ...($this->isUseAsyncOrDefer === true ? $this->preferredData : [])
     ];
 
@@ -239,9 +240,9 @@ class CustomVite extends \Illuminate\Foundation\Vite
       return $this->makeStylesheetTagWithAttributes(
         $url,
         array_merge(
-          Arr::except($attrCss, [$this->_AttrMainKey_]),
+          Arr::except($attrCss, [$this->__AttrMainKey]),
           [
-            $this->_AttrMainKey_ => true,
+            $this->__AttrMainKey => true,
           ]
         )
       );
@@ -252,9 +253,9 @@ class CustomVite extends \Illuminate\Foundation\Vite
     return $this->makeScriptTagWithAttributes(
       $url,
       array_merge(
-        Arr::except($attrScript, [$this->_AttrMainKey_]),
+        Arr::except($attrScript, [$this->__AttrMainKey]),
         [
-          $this->_AttrMainKey_ => true,
+          $this->__AttrMainKey => true,
         ]
       )
     );
@@ -311,7 +312,7 @@ class CustomVite extends \Illuminate\Foundation\Vite
           "crossorigin",
           "async",
           "defer",
-          $this->_AttrMainKey_,
+          $this->__AttrMainKey,
         ])
       );
     }
@@ -403,7 +404,7 @@ class CustomVite extends \Illuminate\Foundation\Vite
           "rel",
           "href",
           "nonce",
-          $this->_AttrMainKey_,
+          $this->__AttrMainKey,
           "async",
           "defer",
         ]),
@@ -435,7 +436,7 @@ class CustomVite extends \Illuminate\Foundation\Vite
           "type",
           "src",
           "nonce",
-          $this->_AttrMainKey_,
+          $this->__AttrMainKey,
           "async",
           "defer",
         ]),
@@ -471,17 +472,17 @@ class CustomVite extends \Illuminate\Foundation\Vite
       return;
     }
 
-    $excludedKeys = ['type', 'nonce', 'async', 'defer', $this->_AttrMainKey_, $this->_AttrKeyIgnoreMinify_];
+    $excludedKeys = ['type', 'nonce', 'async', 'defer', $this->__AttrMainKey, $this->__AttrKeyIgnoreMinify];
 
     $dataAttribute = is_array($dataAttribute) ? $dataAttribute : [];
 
     // Conditionallly inject the ignore-minify marker during local development environment cycles
-    $localOverrides = app()->isLocal() ? [$this->_AttrKeyIgnoreMinify_ => true] : [];
+    $localOverrides = app()->isLocal() ? [$this->__AttrKeyIgnoreMinify => true] : [];
 
     $attributes = $this->parseAttributes(array_merge(
       [
         'type' => 'module',
-        $this->_AttrMainKey_ => true,
+        $this->__AttrMainKey => true,
         'nonce' => $this->cspNonce(),
       ],
       Arr::except($dataAttribute, $excludedKeys),

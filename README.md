@@ -211,9 +211,9 @@ To prevent specific code segments or third-party blocks from being targeted by t
 ```blade
 {{-- Everything inside this directive block remains completely raw and uncompressed --}}
 @ignoreRzlzoneMinify
-  <pre>
+  <div>
      Strictly   Preserved   Preformatted   Whitespace   Output
-  </pre>
+  </div>
 @endIgnoreRzlzoneMinify
 ```
 
@@ -385,7 +385,7 @@ export default defineConfig(({ mode }) => {
 <h2 id="user-content-blade-implementation-usage">💻 Blade Implementation Usage</h2>
 
 Standard framework asset directives compile seamlessly.  
-The core minifier flags these tags with internal structural attributes (rzl-zone--bm) to ensure they remain safe and functional:
+The core minifier flags these tags with internal structural attributes (rzlzone--blade-minify) to ensure they remain safe and functional:
 
 ```blade
 @viteReactRefresh
@@ -414,8 +414,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ---
 
----
-
 <h2 id="user-content-security">🛡 Security</h2>
 
 Please report issues to [rzlzone.dev@gmail.com](mailto:rzlzone.dev@gmail.com).
@@ -428,8 +426,6 @@ Please report issues to [rzlzone.dev@gmail.com](mailto:rzlzone.dev@gmail.com).
 - [All Contributors](../../contributors)
 
 ---
-
-##
 
 <h2 id="user-content-license">📜 License</h2>
 

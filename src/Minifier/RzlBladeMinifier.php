@@ -3,8 +3,9 @@
 namespace RzlZone\BladeMinify\Minifier;
 
 use RzlZone\BladeMinify\BladeCompiler\IgnoreMinifyBladeCompiler;
+use RzlZone\BladeMinify\Support\RzlBladeInternalAttribute;
 
-class RzlBladeMinifier
+final class RzlBladeMinifier
 {
   /** Core minification engine for HTML, Inline JavaScript, and Inline CSS.
    *
@@ -52,8 +53,11 @@ class RzlBladeMinifier
 
         $token = '%%%BLOCK_' . count($blocks) . '%%%';
 
+        $isScriptNonEmptyStyle = $tag === 'style' && __rzl_bm_is_non_empty_string__($content);
+        $isScriptNonEmptyString = $tag === 'script' && __rzl_bm_is_non_empty_string__($content);
+
         // Process script blocks explicitly depending on their content specifications
-        if ($tag === 'script' && __rzl_bm_is_non_empty_string__($content)) {
+        if ($isScriptNonEmptyString) {
           // Initialize default fallback type as native javascript
           $scriptType = 'text/javascript';
 
@@ -77,11 +81,15 @@ class RzlBladeMinifier
         }
 
         // Apply standard inline CSS property minification pipeline
-        if ($tag === 'style' && __rzl_bm_is_non_empty_string__($content)) {
+        if ($isScriptNonEmptyStyle) {
           try {
             $content = $this->minifyInlineCss($this->insertCssSemicolon($content));
           } catch (\Throwable $e) {
           }
+        }
+
+        if (($isScriptNonEmptyString || $isScriptNonEmptyStyle) && ! str($matches[2])->split('/\s+/')->containsStrict(RzlBladeInternalAttribute::INTERNAL_ATTRIBUTE_KEY)) {
+          $matches[2] = "$matches[2] ".RzlBladeInternalAttribute::INTERNAL_ATTRIBUTE_KEY;
         }
 
         $blocks[$token] = "<{$matches[1]}{$matches[2]}>" . $content . "</{$matches[1]}>";
