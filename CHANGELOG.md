@@ -2,6 +2,32 @@
 
 ## All notable changes to `rzl-zone/blade-minify` will be documented in this file.
 
+## v0.0.5
+
+Core architecture lockdown, internal attribute tracking, and strict finalization for classes and constants.
+
+### Added
+
+* Added support class `\RzlZone\BladeMinify\Support\RzlBladeInternalAttribute` to manage internal marker attributes.
+
+### Improvements
+
+* Enhanced the `\RzlZone\BladeMinify\Minifier\RzlBladeMinifier::minify` core process to automatically inject the `INTERNAL_ATTRIBUTE_KEY` into `style` and `script` tags that contain non-empty strings.
+
+### Changed
+
+* Changed `RzlBladeMinifier` to a `final class` to ensure the core minification logic cannot be overridden.
+* Changed `IGNORE_START` and `IGNORE_END` constants in the `IgnoreMinifyBladeCompiler` class to `final const` for strict PHP 8.1 compatibility and architectural safety.
+* Updated `readme.md` to reflect recent changes to the core architecture and internal processes.
+
+### Notes
+
+This release focuses on securing the core architecture by leveraging PHP 8.1's `final` capabilities for both classes and constants. It also introduces a new internal attribute injection system for non-empty scripts and styles to improve tracking and processing reliability during the minification cycle.
+
+**Full Changelog**: <https://github.com/rzl-zone/blade-minify/compare/v0.0.4...v0.0.5>
+
+---
+
 ## v0.0.4
 
 Architecture refactor, minifier engine enhancements, and PHP 8.1 support.
